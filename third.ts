@@ -51,6 +51,7 @@ const human: Human2 = {
 
 //declare -> 함수를 선언한 다음 구현부를 만들기 싫을 떄 함수 앞에 declare를 선언해주세요, JS에서는 사라짐
 declare function forEach(arr: number[], callback: (el: number) => void): void;
+//cf. declare let c: number;도 가능하다 외부에서 만들어진 애들을 타입선언 할 때 declare를 사용하는 것
 
 let target: number[] = [];
 forEach([1, 2, 3], (el) => target.push(el));
