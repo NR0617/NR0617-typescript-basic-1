@@ -68,3 +68,14 @@ const aa: AA = {
     },
 };
 const bb = aa.talk() as unknown as number; //-> <unknown><number>로 하면 react가 잘 모르니까 as로 쓰세요
+
+// any를 쓸 바에 unknown을 쓰자 -> any는 타입 추론을 포기하는 것, unknown을 이후에 직접 타입을 추론해주는 것
+const cc: unknown = aa.talk();
+(cc as AA).talk();
+
+//unknown이 주로 사용되는 부분 -> try catch
+try {
+} catch (error) {
+    (error as Error).message;
+    //(error as AxiosError)
+}
