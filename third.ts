@@ -29,3 +29,41 @@ const m: C = { talk() {}, eat() {}, sit() {}, sleep() {} };
 interface C {
     sleep: () => void;
 }
+
+//void타입을으로 정의되는 함수는 return 값이 없는 함수 -> 단 return undefined는 되고 return null은 안된다
+function n(callback: () => void): void {
+    return;
+    //return undefined;
+}
+
+const ooo = n(() => {
+    return "3"; //콜백에서 사용되는 void는 리턴값을 사용하지 않겠다는 의미
+});
+
+interface Human2 {
+    talk: () => void; //메서드로 사용되는 void는 리턴 값을 사용하지 않겠다는 의미
+}
+const human: Human2 = {
+    talk() {
+        return "abc";
+    },
+};
+
+//declare -> 함수를 선언한 다음 구현부를 만들기 싫을 떄 함수 앞에 declare를 선언해주세요, JS에서는 사라짐
+declare function forEach(arr: number[], callback: (el: number) => void): void;
+
+let target: number[] = [];
+forEach([1, 2, 3], (el) => target.push(el));
+forEach([1, 2, 3], (el) => {
+    target.push(el);
+});
+
+interface AA {
+    talk: () => void;
+}
+const aa: AA = {
+    talk() {
+        return 3;
+    },
+};
+const bb = aa.talk() as unknown as number; //-> <unknown><number>로 하면 react가 잘 모르니까 as로 쓰세요
