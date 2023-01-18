@@ -35,7 +35,7 @@ function aOrB(param) {
 aOrB(new A()); //반드시 인스턴스를 넣어야 한다
 aOrB(new B());
 function typeCheck(a) {
-    if (a.type === "bb" || "talk" in a) {
+    if (a.type === "bb" && "talk" in a) {
         a.bbb;
     }
     else if (a.type === "cc" || "ccc" in a) {
@@ -45,3 +45,15 @@ function typeCheck(a) {
         a.ddd;
     }
 }
+function catOrDog(a) {
+    //타입 판별 직접 만들기
+    if (a.meow) {
+        return false;
+    }
+    return true;
+}
+const x = "hello"; //{},Object는 모든 타입(단, null과 undefined는 제외)
+const y = "hi";
+const xx = "hi";
+const yy = { hello: "world" }; //object는 지양, interface, type, class로 쓰자
+const z = "hi";
