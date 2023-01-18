@@ -43,7 +43,7 @@ type CC = { type: "cc"; ccc: string };
 type DD = { type: "dd"; ddd: string };
 
 function typeCheck(a: BB | CC | DD) {
-    if (a.type === "bb" || "talk" in a) {
+    if (a.type === "bb" && "talk" in a) {
         a.bbb;
     } else if (a.type === "cc" || "ccc" in a) {
         a.ccc;
@@ -51,3 +51,23 @@ function typeCheck(a: BB | CC | DD) {
         a.ddd;
     }
 }
+
+interface Cat {
+    meow: number;
+}
+interface Dog {
+    bow: number;
+}
+function catOrDog(a: Cat | Dog): a is Dog {
+    //타입 판별 직접 만들기
+    if (a.meow) {
+        return false;
+    }
+    return true;
+}
+
+const x: {} = "hello"; //{},Object는 모든 타입(단, null과 undefined는 제외)
+const y: Object = "hi";
+const xx: object = "hi";
+const yy: object = { hello: "world" }; //object는 지양, interface, type, class로 쓰자
+const z: unknown = "hi";
